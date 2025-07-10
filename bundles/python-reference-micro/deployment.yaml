@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: myregistry.com/tuusuario/python-reference-micro:latest
+        image: masedone/python-reference-micro:latest
         ports:
         - containerPort: 8000
         env:
