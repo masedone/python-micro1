@@ -28,3 +28,8 @@ Aplica los manifiestos en el cluster:
 ```bash
 kubectl apply -f k8s/
 ``` 
+
+## subir la imagen a docker hub
+```bash
+docker push masedone/python-reference-micro:latest
+```
