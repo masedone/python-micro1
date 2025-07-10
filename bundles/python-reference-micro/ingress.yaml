@@ -1,12 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: python-reference-micro
+  name: python-reference-ingress
+  namespace: python-reference-micro
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: python-reference-micro.tudominio.com
+  - host: masedone.local
     http:
       paths:
       - path: /
@@ -15,4 +16,4 @@ spec:
           service:
             name: python-reference-micro
             port:
-              number: 80 
+              number: 8000
