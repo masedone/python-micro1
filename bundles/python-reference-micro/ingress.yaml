@@ -3,10 +3,8 @@ kind: Ingress
 metadata:
   name: python-reference-ingress
   namespace: python-reference-micro
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx
+  ingressClassName: custom
   rules:
     - host: python.masedone.local
       http:
@@ -18,4 +16,3 @@ spec:
                 name: python-reference-micro
                 port:
                   number: 8000
-
