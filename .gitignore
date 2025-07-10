@@ -1,0 +1,33 @@
+# Entorno virtual de Python
+venv/
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de configuración de usuario
+*.env
+.env.*
+
+# Archivos de logs
+*.log
+
+# Archivos de Docker
+*.tar
+
+# Archivos de VSCode y otros editores
+.vscode/
+.idea/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Word y temporales
+*.docx
+~$*
+
+# Archivos de Kubernetes generados
+*.yaml~ 

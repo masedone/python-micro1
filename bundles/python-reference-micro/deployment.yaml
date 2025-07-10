@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-reference-micro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-reference-micro
+  template:
+    metadata:
+      labels:
+        app: python-reference-micro
+    spec:
+      containers:
+      - name: app
+        image: myregistry.com/tuusuario/python-reference-micro:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: RABBITMQ_HOST
+          value: "rabbitmq-release.infra-base.svc.cluster.local"
+        - name: RABBITMQ_PORT
+          value: "5672"
+        - name: RABBITMQ_QUEUE
+          value: "test"
+        - name: RABBITMQ_USER
+          value: "admin"
+        - name: RABBITMQ_PASSWORD
+          value: "admin123"
+        - name: REDIS_HOST
+          value: "redis-release-master.infra-base.svc.cluster.local"
+        - name: REDIS_PORT
+          value: "6379"
+        - name: REDIS_DB
+          value: "0"
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis-release
+              key: redis-password
+        - name: KEYCLOAK_PUBLIC_KEY
+          valueFrom:
+            secretKeyRef:
+              name: keycloak-public-key
+              key: public-key
+        - name: KEYCLOAK_ALGORITHM
+          value: "RS256"
+        - name: KEYCLOAK_AUDIENCE
+          value: "python-microservice"
+        - name: KEYCLOAK_ISSUER
+          value: "http://192.168.1.72:30880/realms/Consultores" 

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-reference-micro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-reference-micro
+  template:
+    metadata:
+      labels:
+        app: python-reference-micro
+    spec:
+      containers:
+      - name: python-reference-micro
+        image: python-reference-micro:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: RABBITMQ_HOST
+          value: "rabbitmq"
+        - name: RABBITMQ_QUEUE
+          value: "test"
+        - name: REDIS_HOST
+          value: "redis"
+        - name: REDIS_PORT
+          value: "6379"
+        - name: REDIS_DB
+          value: "0" 

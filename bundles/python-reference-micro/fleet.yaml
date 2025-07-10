@@ -1,0 +1,3 @@
+defaultNamespace: python-reference-micro
+helm:
+  releaseName: python-reference-micro 
